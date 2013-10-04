@@ -1,4 +1,4 @@
-caitriona.github.com
+caitriona.github.io
 ====================
 
 root github page
