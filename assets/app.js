@@ -28,6 +28,15 @@
         }
     }
 
+    // Return the demo link - if I've set the default branch to gh-pages & deleted master, the github page is the demo site
+    function getDemoLink(repo) {
+        if (repo.default_branch == 'gh-pages') {
+			return repo.homepage;
+        } else {
+			return null;
+		}
+    }
+
     // Display a repo's overview (for recent updates section)
     function showRepoOverview(repo) {
         var item;
@@ -50,6 +59,14 @@
         $link.append('<p class="repo__updated">Last updated: ' + prettyDate(repo.pushed_at) + '</p>');
 
         $link.appendTo($item);
+		
+		var $demolink = getDemoLink(repo)
+		if ($demolink){
+			$demolink = $('<a class="demo-link" href="' + $demolink + '" />');
+			$demolink.append('View Live Demo');
+			$demolink.appendTo($item);
+		}
+		
         $item.appendTo('#repos');
     }
 
